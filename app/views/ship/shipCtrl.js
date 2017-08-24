@@ -1,7 +1,4 @@
-angular.module('starships').controller('shipCtrl', function($scope){
-  $scope.shipData = {
-    height:50,
-    weight:40,
-    maxSpeed:60
-  }
+angular.module('starships').controller('shipCtrl', function($scope, $stateParams, shipSrvc){
+  shipSrvc.getShipById($stateParams.id).then(data=>$scope.shipData=data);
+  $scope.id = $stateParams.id;
 })

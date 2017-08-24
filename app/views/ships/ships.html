@@ -1,5 +1,11 @@
 <h2>Starship List</h2>
-{{name}}
 <div ng-repeat = "ship in ships">
-  {{ship}}
+  <h3><a ui-sref="ship({id:ship.id})">{{ship.name}} -- {{ship.id}}</a></h3>
+  <div class="stats">
+    <div class="stat">Cost: {{ship.cost_in_credits | currency}}<div>
+    <div class="stat">Crew Size: {{ship.crew | currency}}<div>
+    <div class="stat">Hyperdrive Rating: {{ship.hyperdrive_rating | currency}}<div>
+    </br>
+  </div>
+
 </div>
