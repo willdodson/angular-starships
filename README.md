@@ -60,3 +60,5 @@ Api endpoint to get list of starships.
 
 Api endpoint to get a specific starship
 `https://swapi.co/api/starships/${id}`
+
+Loading screen image
