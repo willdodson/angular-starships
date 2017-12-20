@@ -1,20 +1,26 @@
 angular.module('starships').service('shipSrvc', 
-                            function($http){
+                            function($http, $q){
     let lastPage = 1;
 
     this.getStarships = ( page = lastPage )=>{
         lastPage = page;
-        return $http.get(`https://swapi.co/api/starships/?page=${page}`)
+        return $q.all(
+            [$http.get(`https://swapi.co/api/starships/?page=1`),
+            $http.get(`https://swapi.co/api/starships/?page=2`),
+            $http.get(`https://swapi.co/api/starships/?page=3`),
+            $http.get(`https://swapi.co/api/starships/?page=4`)
+            ])
         .then(resp=>{
             console.log(resp);
-            return resp.data.results.map(ship=>{
-                // https://swapi.co/api/starships/11/
-                // get id from there
-                let ary = ship.url.split('/');
-
-                ship.id = ary[ary.length-2]*1;
-                return ship
-            })
+            return  resp.reduce((all, resp)=>{
+                all.push(...resp.data.results.map(ship=>{
+                    let ary = ship.url.split('/');
+                    ship.id = ary[ary.length-2]*1;
+                    return ship
+                }))
+                return all;
+            }, [])
+            
         })
     }
 
