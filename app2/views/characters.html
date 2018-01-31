@@ -1,0 +1,8 @@
+<h2>Characters</h2>
+
+<div ng-repeat="character in characters">
+  <div>Name: {{character.name}}</div>
+  <div>Weight: {{character.weight}}</div>
+  <div><img ng-src="{{character.pictureUrl}}"></div>
+  <div><a ui-sref="character({ id: character.id })">Link</a></div>
+</div>
