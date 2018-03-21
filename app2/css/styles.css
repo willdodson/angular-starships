@@ -1,0 +1,24 @@
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+  background-color: plum;
+  display: flex;
+  padding: 20px;
+}
+
+nav a {
+  flex: 1;
+  color: white;
+  text-align: center;
+}
+
+.character {
+  border: 1px plum solid;
+  margin-bottom: 10px;
+}
+
+.thumbnail {
+  max-width: 128px;
+}
